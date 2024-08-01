@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "OGame Tracker",
+        "description": "The title of the application, displayed in the web store."
+    },
+    "appDesc": {
+        "message": "Cette extension enregistre les informations du joueur et les représente graphiquement.",
+        "description": "The title of the application, displayed in the web store."
+    }
+}

@@ -1,0 +1,123 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "name": "OGame Tracker Ninja",
+    "description": "__MSG_appDesc__",
+    "manifest_version": 3,
+    "default_locale": "de",
+    "version": "2024.7.17.18144",
+    "icons": {
+        "128": "icon128.png"
+    },
+    "permissions": [
+        "storage",
+        "unlimitedStorage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "img/*",
+                "views/*",
+                "mdi/*",
+                "ogti/*"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.ogame.gameforge.com/game/*", "*://*/bots/*/browser/html/*"
+            ],
+            "run_at": "document_start",
+            "js": [
+                "content-scripts/add-menu-item.js"
+            ],
+            "css": [
+                "content-scripts/add-menu-item.css"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.ogame.gameforge.com/game/*", "*://*/bots/*/browser/html/*"
+            ],
+            "run_at": "document_end",
+            "js": [
+                "content-scripts/add-notification-iframe.js"
+            ],
+            "css": [
+                "content-scripts/add-notification-iframe.css"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.ogame.gameforge.com/game/*", "*://*/bots/*/browser/html/*"
+            ],
+            "run_at": "document_start",
+            "all_frames": true,
+            "js": [
+                "content-scripts/empire-tracking.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.ogame.gameforge.com/game/*", "*://*/bots/*/browser/html/*"
+            ],
+            "run_at": "document_end",
+            "js": [
+                "content-scripts/generate-color-css-variables.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.ogame.gameforge.com/game/*", "*://*/bots/*/browser/html/*"
+            ],
+            "run_at": "document_start",
+            "css": [
+                "mdi/style.chrome.css",
+                "ogti/style.chrome.css"
+            ],
+            "js": [
+                "content-scripts/icons-everywhere.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.ogame.gameforge.com/game/*", "*://*/bots/*/browser/html/*"
+            ],
+            "run_at": "document_start",
+            "js": [
+                "content-scripts/keep-service-worker-alive.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.ogame.gameforge.com/game/*", "*://*/bots/*/browser/html/*"
+            ],
+            "run_at": "document_end",
+            "js": [
+                "content-scripts/message-tracking.js"
+            ],
+            "css": [
+                "content-scripts/message-tracking.css"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.ogame.gameforge.com/game/*", "*://*/bots/*/browser/html/*"
+            ],
+            "run_at": "document_start",
+            "js": [
+                "content-scripts/universe-and-account-tracking.js"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "service-worker.js"
+    }
+}
