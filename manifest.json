@@ -5,7 +5,7 @@
     "description": "__MSG_appDesc__",
     "manifest_version": 3,
     "default_locale": "de",
-    "version": "2024.7.31.17002",
+    "version": "2024.10.19.14484",
     "icons": {
         "128": "icon128.png"
     },
